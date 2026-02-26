@@ -4,11 +4,14 @@ export default defineNuxtConfig({
   pwa: {
     manifestFilename: 'manifest.webmanifest',
     registerType: 'autoUpdate',
+
     manifest: {
       name: 'My Nuxt PWA App',
       short_name: 'NuxtPWA',
-      theme_color: '#ffffff',
+      start_url: '/',
       display: 'standalone',
+      background_color: '#ffffff',
+      theme_color: '#ffffff',
       icons: [
         {
           src: '/icon-1.png',
@@ -22,6 +25,10 @@ export default defineNuxtConfig({
           purpose: 'any maskable'
         }
       ]
+    },
+
+    workbox: {
+      navigateFallback: '/'
     }
   }
 })

@@ -3,7 +3,6 @@
     <div class="container">
       <h1>Nuxt PWA Working 🚀</h1>
       <p>This app can be installed on mobile and desktop.</p>
-      <button class="btn">Install App</button>
     </div>
   </div>
 </template>
