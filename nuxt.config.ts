@@ -1,12 +1,23 @@
 export default defineNuxtConfig({
   modules: ['@vite-pwa/nuxt'],
 
-  ssr: true, // keep SSR
+  ssr: true,
+
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'manifest',
+          href: '/manifest.webmanifest'
+        }
+      ]
+    }
+  },
 
   pwa: {
     manifestFilename: 'manifest.webmanifest',
     registerType: 'autoUpdate',
-    injectRegister: 'auto',   // IMPORTANT
+    injectRegister: 'auto',
     includeAssets: ['i1.png', 'i2.png'],
 
     manifest: {
@@ -16,6 +27,8 @@ export default defineNuxtConfig({
       display: 'standalone',
       background_color: '#ffffff',
       theme_color: '#ffffff',
+      lang: 'en',
+      scope: '/',
       icons: [
         {
           src: '/i1.png',
@@ -32,7 +45,8 @@ export default defineNuxtConfig({
     },
 
     workbox: {
-      navigateFallback: '/'
+      navigateFallback: '/',
+      cleanupOutdatedCaches: true
     },
 
     client: {
