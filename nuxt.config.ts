@@ -1,9 +1,13 @@
 export default defineNuxtConfig({
   modules: ['@vite-pwa/nuxt'],
 
+  ssr: true, // keep SSR
+
   pwa: {
     manifestFilename: 'manifest.webmanifest',
     registerType: 'autoUpdate',
+    injectRegister: 'auto',   // IMPORTANT
+    includeAssets: ['i1.png', 'i2.png'],
 
     manifest: {
       name: 'My Nuxt PWA App',
@@ -14,12 +18,12 @@ export default defineNuxtConfig({
       theme_color: '#ffffff',
       icons: [
         {
-          src: '/icon-1.png',
+          src: '/i1.png',
           sizes: '192x192',
           type: 'image/png'
         },
         {
-          src: '/icon-5.png',
+          src: '/i2.png',
           sizes: '512x512',
           type: 'image/png',
           purpose: 'any maskable'
@@ -29,6 +33,10 @@ export default defineNuxtConfig({
 
     workbox: {
       navigateFallback: '/'
+    },
+
+    client: {
+      installPrompt: true
     }
   }
 })
